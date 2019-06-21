@@ -10,15 +10,32 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 12;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Monospace:pixelsize=15:antialias=true:autohint=true" };
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+
+static const char col_gruvboxblack[]     = "#1d2021";
+static const char col_gruvboxred[]       = "#cc241d";
+static const char col_gruvboxgreen[]     = "#98971a";
+static const char col_gruvboxyellow []   = "#d79921";
+static const char col_gruvboxblue[]      = "#458588";
+static const char col_gruvboxmagenta[]   = "#b16286";
+static const char col_gruvboxcyan[]      = "#689d6a";
+static const char col_gruvboxwhite[]     = "#a89984";
+
+static const char col_gruvboxbblack[]    = "#928374";
+static const char col_gruvboxbred[]      = "#fb4934";
+static const char col_gruvboxbgreen[]    = "#b8bb26";
+static const char col_gruvboxbyellow []  = "#fabd2f";
+static const char col_gruvboxbblue[]     = "#83a598";
+static const char col_gruvboxbmagenta[]  = "#d3869b";
+static const char col_gruvboxbcyan[]     = "#8ec07c";
+static const char col_gruvboxbwhite[]    = "#ebdbb2";
+
+static const char col_gruvboxbg[]        = "#282828";
+static const char col_gruvboxfg[]        = "#ebdbb2";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	/*                  fg                  bg                  border   */
+    [SchemeNorm] = {    col_gruvboxfg,      col_gruvboxbg,      col_gruvboxwhite },
+    [SchemeSel] = {     col_gruvboxfg,      col_gruvboxblue,    col_gruvboxblue },
 };
 
 /* tagging */
