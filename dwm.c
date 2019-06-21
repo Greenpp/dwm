@@ -705,8 +705,8 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
     drw_setscheme(drw, scheme[SchemeNorm]);
-    sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
-    drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
+    sw = TEXTW(stext);
+    drw_text(drw, m->ww - sw, 0, sw, bh, lrpad / 2, stext, 0);
 
 	for (c = m->clients; c; c = c->next) {
 		occ |= c->tags;
@@ -719,7 +719,7 @@ drawbar(Monitor *m)
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		if (occ & 1 << i)
-			drw_rect(drw, x + boxw, drw->fonts->h - 2, w - ( 2 * boxw + 1), 2,
+			drw_rect(drw, x + boxw, drw->fonts->h + vertpadbar - 2, w - ( 2 * boxw + 1), 2,
 			    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
 			    urg & 1 << i);
 
@@ -1555,8 +1555,8 @@ setup(void)
 	drw = drw_create(dpy, screen, root, sw, sh);
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
-	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	lrpad = drw->fonts->h + horizpadbar;
+	bh = drw->fonts->h + vertpadbar;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
