@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -699,7 +700,11 @@ drawbar(Monitor *m)
 {
 	int x, w, sw = 0;
 	int boxw = drw->fonts->h / 6 + 2;
+    int mid;
 	unsigned int i, occ = 0, urg = 0;
+    time_t ctime;
+    struct tm *timeinfo;
+    char time_buff[64];
 	Client *c;
 
 	/* draw status first so it can be overdrawn by tags later */
@@ -731,7 +736,14 @@ drawbar(Monitor *m)
 	if ((w = m->ww - sw - x) > bh) {
         drw_setscheme(drw, scheme[SchemeNorm]);
         drw_rect(drw, x, 0, w, bh, 1, 1);
+
+        ctime = time(NULL);
+        timeinfo = localtime(&ctime);
+        strftime(time_buff, sizeof time_buff, time_format, timeinfo);
+        mid = (m->ww - TEXTW(time_buff)) / 2 - x;
+        drw_text(drw, x, 0, w, bh, mid, time_buff, 0);
 	}
+
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
 }
 

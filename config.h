@@ -10,6 +10,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 12;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Monospace:pixelsize=15:antialias=true:autohint=true" };
+static const char time_format[]     = "%F %R";
 
 static const char col_gruvboxblack[]     = "#1d2021";
 static const char col_gruvboxred[]       = "#cc241d";
