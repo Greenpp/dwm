@@ -54,6 +54,7 @@ static const Rule rules[] = {
 	/* class        instance    title           tags mask       isfloating   monitor */
 	{ "Gimp",       NULL,       NULL,           0,              1,           -1 },
     { "Steam",      "Steam",    "Friends List", 0,              1,           -1 },
+    { "Steam",      "Steam",    "Steam - News", 0,              1,           -1 },
 };
 
 /* layout(s) */
